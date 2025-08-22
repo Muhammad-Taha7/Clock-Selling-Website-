@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock Website Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" />
+  <!-- Locomotive CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+</head>
+<body class="bg-gray-100 font-[Poppins]">
+  
+  <!-- Custom Cursor -->
+<div id="cursor"
+  class="fixed hidden lg:block top-0 left-0 
+         w-12 h-12 rounded-full pointer-events-none 
+         transform -translate-x-1/2 -translate-y-1/2 
+         z-[9999] bg-white mix-blend-difference">
+</div>
+
+
+  <!-- Hero Wrapper -->
+  <div class="hero min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-200 flex flex-col">
+    
+    <!-- Navbar -->
+   <nav class="fixed top-0 left-0 w-full h-[5.5rem] flex items-center justify-between px-6 md:px-[3rem] lg:px-[7rem] bg-white/80 backdrop-blur-sm shadow-sm z-[999]">
+      
+      <!-- Logo -->
+      <div class="logo">
+        <img src="https://i.postimg.cc/C5BnHTBd/ceb4f8a35ef015fab67144058839dac8-removebg-preview.png" 
+             class="h-[4rem] md:h-[5rem] lg:h-[6rem] w-auto" alt="Clock Logo">
+      </div>
+
+      <!-- Desktop Links -->
+      <div class="links hidden md:flex text-gray-600 items-center gap-12 text-[1.1rem]">
+        <a href="#home" class="relative group hover:text-gray-800 transition-colors">
+          Home <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-gray-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#collections" class="relative group hover:text-gray-800 transition-colors">
+          Collections <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-gray-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#about" class="relative group hover:text-gray-800 transition-colors">
+          About Us <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-gray-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#contact" class="relative group hover:text-gray-800 transition-colors">
+          Contact Us <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-gray-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </div>
+
+      <!-- Cart + Hamburger -->
+      <div class="flex items-center gap-6">
+        <!-- Cart -->
+        <div class="cart relative text-[1.5rem] text-gray-600 cursor-pointer hover:text-gray-800 transition-colors" id="cart">
+          <i class="ri-shopping-cart-line"></i>
+          <span id="cart-count" class="absolute -top-2 -right-3 bg-gray-700 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </div>
+        <!-- Hamburger -->
+        <div class="md:hidden text-[1.5rem] cursor-pointer hover:text-gray-800 transition-colors" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="home" class="flex pt-[10rem] lg:pt-0 flex-col lg:flex-row items-center justify-between gap-16 py-16 px-6 md:px-[3rem] lg:px-[7rem] flex-grow">
+      
+      <!-- Left Text -->
+      <div class="left max-w-2xl text-center md:text-left">
+        <h1 class="text-5xl md:text-[6rem] font-bold text-gray-800 mb-6 md:text-center lg:text-left leading-tight md:leading-[5.7rem]">
+          Timeless <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-800">Elegance</span>
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed mb-8 md:text-center lg:text-left">
+          Discover our exclusive collection of premium clocks designed to bring elegance and precision 
+          to your home and office. From classic wall clocks to modern digital designs, each piece is crafted 
+          with perfection to match your style.
+        </p>
+        <div class="btn md:flex md:justify-center md:items-center lg:flex-none lg:justify-start lg:items-start">
+            <button class="bg-gray-800 md:text-center lg:text-left text-white px-8 py-3 rounded-full hover:bg-gray-700 text-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+          Shop Now
+        </button>
+        </div>
+        
+      </div>
+
+    <!-- Right Clock -->
+<div class="clock-container flex justify-center">
+  <div class="clock w-72 h-72 md:w-80 md:h-80 lg:w-[28rem] lg:h-[28rem] rounded-full border-[10px] lg:border-[12px] border-gray-800 relative flex items-center justify-center bg-white shadow-2xl">
+    
+    <!-- Clock Numbers -->
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="absolute top-6 text-lg md:text-xl lg:text-3xl font-bold text-gray-800">12</div>
+      <div class="absolute right-6 text-lg md:text-xl lg:text-3xl font-bold text-gray-800">3</div>
+      <div class="absolute bottom-6 text-lg md:text-xl lg:text-3xl font-bold text-gray-800">6</div>
+      <div class="absolute left-6 text-lg md:text-xl lg:text-3xl font-bold text-gray-800">9</div>
+    </div>
+    
+    <!-- Center dot -->
+    <div class="w-4 h-4 lg:w-6 lg:h-6 bg-gray-800 rounded-full z-50 absolute"></div>
+    
+    <!-- Hour hand -->
+    <div id="hour" 
+         class="absolute w-2 h-16 md:h-20 lg:h-32 bg-gray-800 rounded-full" 
+         style="bottom: 50%; left: 50%; transform-origin: bottom center; margin-left: -4px;"></div>
+    
+    <!-- Minute hand -->
+    <div id="minute" 
+         class="absolute w-1.5 h-24 md:h-28 lg:h-40 bg-gray-600 rounded-full" 
+         style="bottom: 50%; left: 50%; transform-origin: bottom center; margin-left: -3px;"></div>
+    
+    <!-- Second hand -->
+    <div id="second" 
+         class="absolute w-1 h-28 md:h-32 lg:h-48 bg-red-500 rounded-full" 
+         style="bottom: 50%; left: 50%; transform-origin: bottom center; margin-left: -2px;"></div>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+<!-- Product Section -->
+<h2 class="text-center text-[2.4rem] mt-[6rem] font-poppins font-medium">
+  Col<span class="border-b-4 rounded-sm border-gray-500">lec</span>tions
+</h2>
+
+<section class="product mt-[4rem] px-6 md:px-[2rem] lg:px-[10rem]">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+    <!-- Card 1 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://m.media-amazon.com/images/I/71vxfYTvQdL._UF894,1000_QL80_.jpg" class="h-full w-full object-cover object-center" alt="Vintage Wooden Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Vintage Wooden Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 2,499</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnQ5ZfFjG8a9x_e6D5rVyXxY_ke4a5P9Yg-g&s" class="h-full w-full object-cover object-center" alt="Modern Wall Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Modern Wall Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 3,199</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://m.media-amazon.com/images/I/61EesoY-vmL._UF894,1000_QL80_.jpg" class="h-full w-full object-cover object-center" alt="Luxury Golden Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Luxury Golden Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 4,299</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://i.pinimg.com/474x/5c/69/1e/5c691e079a196b0915e3e29e45d24cec.jpg" class="h-full w-full object-cover object-center" alt="Minimal Black Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Minimal Black Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 1,899</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8-SyP9O8qgx2mbI308PEqdo7UPDdtqeYB7Q&s" class="h-full w-full object-cover object-center" alt="Classic Round Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Classic Round Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 2,099</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtbmPSucfpiAALA1q77cCW5EDq58cvQGAw-A&s" class="h-full w-full object-cover object-center" alt="Premium Office Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Premium Office Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 3,599</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT1ORlgVp4nBFagQKK0kl7wgubl29PB66Ksg&s" class="h-full w-full object-cover object-center" alt="Designer Metal Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Designer Metal Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 4,799</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNvHKvrmjH2SupdoiKbgnqMQpe1iHC6y01-w&s" class="h-full w-full object-cover object-center" alt="Roman Numeral Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Roman Numeral Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 2,799</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5RCAWZ1A8qQW9BKFp_O34v2DC8tkRNtVTyPjLT29Uf3KpYUD-ugOzM5RtBiC7-jt426M&usqp=CAU" class="h-full w-full object-cover object-center" alt="Smart Digital Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Smart Digital Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 5,499</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+      <div class="img h-96 p-2 w-full">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ17ftTXxho13TfpZcO54vKnjVFq0Li_YQFg&s" class="h-full w-full object-cover object-center" alt="Luxury Glass Clock">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="text-[1.5rem] font-semibold text-gray-800">Luxury Glass Clock</h3>
+        <p class="text-gray-600 text-[1.1rem]">Rs. 6,299</p>
+        <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+      </div>
+    </div>
+
+
+
+    <!-- Card 11 -->
+<div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+  <div class="img h-96 p-2 w-full">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHeQjK8QxWmXkC3qyfpdvm8YEbMQIvOrgd_g&s" class="h-full w-full object-cover object-center" alt="Vintage Wooden Clock">
+  </div>
+  <div class="p-4 flex flex-col gap-2">
+    <h3 class="text-[1.5rem] font-semibold text-gray-800">Vintage Wooden Clock</h3>
+    <p class="text-gray-600 text-[1.1rem]">Rs. 4,899</p>
+    <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Card 12 -->
+<div class="card border rounded-2xl shadow-lg overflow-hidden bg-white hover:shadow-2xl transition duration-300">
+  <div class="img h-96 p-2 w-full">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUGREQwXN7KQA29QzqbEuv8PNnPXUIhfgggA&s" class="h-full w-full object-cover object-center" alt="Modern Wall Clock">
+  </div>
+  <div class="p-4 flex flex-col gap-2">
+    <h3 class="text-[1.5rem] font-semibold text-gray-800">Modern Wall Clock</h3>
+    <p class="text-gray-600 text-[1.1rem]">Rs. 7,499</p>
+    <button class="mt-2 bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition">Add to Cart</button>
+  </div>
+</div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<section class="bg-gray-50 py-20 md:mt-[17rem]">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <!-- Heading -->
+    <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">About Us</h2>
+    <div class="w-24 h-1 bg-gray-800 mx-auto mb-8"></div>
+
+    <!-- Content -->
+    <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mb-6">
+      Welcome to <span class="font-semibold">Our Company</span>.  
+      We are passionate about delivering quality and excellence in everything we do.  
+      Our mission is to combine creativity, innovation, and dedication to bring timeless solutions 
+      for businesses and individuals.
+    </p>
+    <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mb-8">
+      Over the years, we have built a reputation of trust and reliability.  
+      We believe in strong values, collaboration, and making a meaningful difference in the lives of our clients.
+    </p>
+
+    <!-- Button -->
+    <a href="#contact" class="inline-block px-8 py-4 bg-gray-900 text-white text-lg rounded-lg shadow-md hover:bg-gray-700 transition">
+      Learn More
+    </a>
+  </div>
+</section>
+
+
+
+
+
+<!-- Contact Section -->
+<section class="bg-gray-50 py-20">
+  <div class="max-w-4xl mx-auto px-6">
+    <!-- Heading -->
+    <h2 class="text-4xl font-bold text-center text-gray-900 mb-6">Contact Us</h2>
+    <div class="w-24 h-1 bg-gray-800 mx-auto mb-10"></div>
+
+    <!-- Form -->
+    <form action="#" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Your Name" 
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-700 focus:outline-none">
+        <input type="email" placeholder="Your Email" 
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-700 focus:outline-none">
+      </div>
+
+      <input type="text" placeholder="Subject" 
+             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-700 focus:outline-none">
+
+      <textarea rows="5" placeholder="Your Message" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-700 focus:outline-none"></textarea>
+
+      <button type="submit" 
+              class="w-full md:w-auto px-8 py-3 bg-gray-900 text-white font-medium rounded-lg shadow-md hover:bg-gray-700 transition">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-10 mt-20">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+    
+    <!-- About -->
+    <div>
+      <h3 class="text-xl font-semibold text-white mb-4">Our Company</h3>
+      <p class="text-gray-400 leading-relaxed">
+        Dedicated to delivering quality and timeless solutions with trust, innovation, and excellence.  
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-xl font-semibold text-white mb-4">Quick Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white transition">Home</a></li>
+        <li><a href="#about" class="hover:text-white transition">About</a></li>
+        <li><a href="#services" class="hover:text-white transition">Services</a></li>
+        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h3 class="text-xl font-semibold text-white mb-4">Contact Info</h3>
+      <ul class="space-y-2 text-gray-400">
+        <li>Email: info@company.com</li>
+        <li>Phone: +92 300 1234567</li>
+        <li>Address: Lahore, Pakistan</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+    © 2025 Our Company. All Rights Reserved.
+  </div>
+</footer>
+
+
+
+
+
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-[999] p-6">
+    <div class="flex justify-end items-center mb-8">
+      <i class="ri-close-line text-2xl cursor-pointer bg-gray-700 text-white p-2 px-3 rounded-full hover:bg-gray-600 transition-colors" id="close-btn"></i>
+    </div>
+    <div class="flex flex-col gap-6 text-lg text-gray-700">
+      <a href="#home" class="hover:text-gray-900 transition-colors">Home</a>
+      <a href="#collections" class="hover:text-gray-900 transition-colors">Collections</a>
+      <a href="#about" class="hover:text-gray-900 transition-colors">About Us</a>
+      <a href="#contact" class="hover:text-gray-900 transition-colors">Contact Us</a>
+    </div>
+  </div>
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-[998]"></div>
+
+<!-- Cart Drawer -->
+<div id="cart-drawer" class="fixed top-0 right-0 h-full w-full lg:w-[30rem] bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-[999] flex flex-col">
+  <!-- Header -->
+  <div class="flex justify-between items-center p-4 border-b">
+    <h2 class="text-xl font-semibold">Your Cart</h2>
+    <button id="close-cart" class="text-2xl text-white bg-gray-800 p-3 px-5  rounded-[50%]">&times;</button>
+  </div>
+
+  <!-- Cart Items -->
+  <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
+
+  <!-- Footer -->
+  <div class="p-4 border-t">
+    <div class="flex justify-between text-gray-700 mb-2">
+      <span>Subtotal</span>
+      <span id="subtotal">Rs. 0</span>
+    </div>
+    <div class="flex justify-between text-gray-700 mb-2">
+      <span>Discount (10%)</span>
+      <span id="discount">Rs. 0</span>
+    </div>
+    <div class="flex justify-between font-bold text-lg">
+      <span>Total</span>
+      <span id="total">Rs. 0</span>
+    </div>
+  </div>
+</div>
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 right-6 bg-gray-800 text-white py-2 px-4 rounded-lg shadow-lg opacity-0 pointer-events-none transition-opacity duration-500">
+  Added to Cart
+</div>
+
+
+
+</body>
+</html>
